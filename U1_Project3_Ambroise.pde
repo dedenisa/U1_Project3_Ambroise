@@ -1,10 +1,21 @@
 int [] ellipseX = new int [50];
 int [] ellipseY = new int [50];
 boolean enter = false;
+import ddf.minim.*;
+import ddf.minim.analysis.*;
+import ddf.minim.effects.*;
+import ddf.minim.signals.*;
+import ddf.minim.spi.*;
+import ddf.minim.ugens.*;
+Minim minim;
+AudioPlayer song;
+AudioPlayer input;
 
 void setup()
 {
-
+  minim = new Minim(this);
+  song = minim.loadFile("Sad Song Piano.mp3");
+  song.loop();
   for (int i = 0; i < 50; i++)
   {
     ellipseX [i] = (int) random (0, width - 50);
@@ -40,7 +51,11 @@ void draw()
   }
 }
 void keyPressed()
-{
+{ 
+  if (key == DOWN)
+  {
+    
+  }
   if (key == ENTER && enter == false)
   {
     enter = true;
