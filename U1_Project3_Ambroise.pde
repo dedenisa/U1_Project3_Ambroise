@@ -1,11 +1,11 @@
-int [] ellipseX = new int [10];
-int [] ellipseY = new int [10];
+int [] ellipseX = new int [50];
+int [] ellipseY = new int [50];
 boolean enter = false;
-int x = 1;
 
 void setup()
 {
-  for (int i = 0; i < 10; i++)
+
+  for (int i = 0; i < 50; i++)
   {
     ellipseX [i] = (int) random (0, width - 50);
     ellipseY [i] = (int) random (0, height -50);
@@ -17,31 +17,18 @@ void setup()
 
 void draw()
 {
+  keyPressed();
   float x = random(width);
   float y = random(height);
   if (enter == false)
   {
-    if (keyPressed)
-      {
-        if (key == ENTER && enter == false)
-        {
-          enter = true;
-        }
-        if (key == ENTER && enter == false)
-        {
-          enter = true;
-        }
-      }
-    for (int i = 0; i < 10; i++)
+    for (int i = 0; i < 50; i++)
     {
-      fill(random(255), 255, 255, 100);
+      fill(random(255), 255, 255, 110);
       ellipse(ellipseX[i], ellipseY[i], 20, 20);
-      ellipseX[i] = ellipseX[i] + (int) random(-5, 5);
-      ellipseY[i] = ellipseY[i] + (int) random(-5, 5);
+      ellipseX[i] = ellipseX[i] + (int) random(-100, 100);
+      ellipseY[i] = ellipseY[i] + (int) random(-100, 100);
       noStroke();
-
-      if (x > width)
-        x = -1;
       {
         if (mousePressed)
         {
@@ -50,5 +37,15 @@ void draw()
         }
       }
     }
+  }
+}
+void keyPressed()
+{
+  if (key == ENTER && enter == false)
+  {
+    enter = true;
+  } else if (key == ENTER && enter == true)
+  {
+    enter = false;
   }
 }
