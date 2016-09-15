@@ -1,6 +1,7 @@
 int [] ellipseX = new int [50];
 int [] ellipseY = new int [50];
 boolean enter = false;
+boolean restart = false;
 import ddf.minim.*;
 import ddf.minim.analysis.*;
 import ddf.minim.effects.*;
@@ -32,33 +33,35 @@ void draw()
   float x = random(width);
   float y = random(height);
   if (enter == false)
-  {
-    for (int i = 0; i < 50; i++)
+    if (restart == false)
     {
-      fill(random(255), 255, 255, 110);
-      ellipse(ellipseX[i], ellipseY[i], 20, 20);
-      ellipseX[i] = ellipseX[i] + (int) random(-100, 100);
-      ellipseY[i] = ellipseY[i] + (int) random(-100, 100);
-      noStroke();
+      for (int i = 0; i < 50; i++)
       {
-        if (mousePressed)
+        fill(random(255), 255, 255, 255 );
+        ellipse(ellipseX[i], ellipseY[i], 1, 1);
+        ellipseX[i] = ellipseX[i] + (int) random(-3, 3);
+        ellipseY[i] = ellipseY[i] + (int) random(-3, 3);
+        noStroke();
         {
-          fill(0);
-          ellipse(mouseX, mouseY, 40, 40);
+          if (mousePressed)
+          {
+            fill(0);
+            ellipse(mouseX, mouseY, 40, 40);
+          }
         }
       }
     }
-  }
 }
 void keyPressed()
 { 
   if (key == DOWN)
   {
-    
-  }
-  if (key == ENTER && enter == false)
+  } else if (key == DOWN && restart == true)
   {
-    enter = true;
+    restart = false;
+  }
+  if (key == ENTER)
+  {
   } else if (key == ENTER && enter == true)
   {
     enter = false;
